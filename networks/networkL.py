@@ -151,6 +151,7 @@ class U_Net(nn.Module):
         return x1,x2,x3,x4,x5
 
     def forward(self,input):
+	#5D input in the form of (Dates, Batchsize, Channels, Height, Width)
         #encoding path
         x1,x2,x3,x4,x5 = self.encoder(input)
 
