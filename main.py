@@ -24,7 +24,8 @@ csv_file_val = '../myxys_val.csv'
 img_folder = '../IMGS_PREPROCESSED/' #folder with preprocessed images according to preprocess.py
 lbl_folder = '../Labels/' #folder with OSCD dataset's labels
 patch_size=32
-nb_dates = [1,5]
+nb_dates = [1,5] #specify the number of dates you want to use, e.g put [1,2,3,4,5] if you want to use all five dates
+                 #or [1,2,5] to use just three of them
 model_type = 'simple' #choose network type ('simple' or 'lstm')
                       #'simple' refers to a simple U-Net while 'lstm' refers to a U-Net involving LSTM blocks
 
