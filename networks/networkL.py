@@ -60,7 +60,6 @@ class RNNCell(nn.Module):
         in_gate = torch.sigmoid(in_gate)
         forget_gate = torch.sigmoid(forget_gate)
         out_gate = torch.sigmoid(out_gate)
-
         cell_gate = torch.tanh(cell_gate)
 
         c_state = (forget_gate * c_state) + (in_gate * cell_gate)
