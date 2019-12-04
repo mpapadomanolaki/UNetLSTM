@@ -1,5 +1,7 @@
 # UNetLSTM
+Code of the following manuscript:
 
+https://arxiv.org/abs/1910.07778
 
 # Steps
 # 1. Preprocessing with preprocess.py
