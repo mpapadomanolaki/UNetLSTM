@@ -10,7 +10,6 @@ class MyDataset(Dataset):
     def __init__(self, csv_path, image_ids, image_folder, label_folder, nb_dates, patch_size):
         # Read the csv file
         self.data_info = pd.read_csv(csv_path)
-#        self.data_info = self.data_info.iloc[np.random.permutation(len(self.data_info))] #shuffle data
 
         self.patch_size = patch_size
         self.nb_dates = nb_dates
