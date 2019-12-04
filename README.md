@@ -1,6 +1,8 @@
 # UNetLSTM
 Code of the following manuscript:
 
+'Detecting Urban Changes With Recurrent Neural Networks From Multitemporal Sentinel-2 Data'
+
 https://arxiv.org/abs/1910.07778
 
 # Steps
@@ -26,4 +28,4 @@ Here you need to specify the folder with the OSCD dataset's Labels.
 
 Comments are included in the scripts for further instructions.
 
-If you find this work useful, please consider citing: M.Papadomanolaki, Sagar Verma, M. Vakalopoulou, S. Gupta, K., 'DETECTING URBAN CHANGES WITH RECURRENT NEURAL NETWORKS FROM MULTITEMPORAL SENTINEL-2 DATA'
+If you find this work useful, please consider citing: M.Papadomanolaki, Sagar Verma, M. Vakalopoulou, S. Gupta, K., 'Detecting Urban Changes With Recurrent Neural Networks From Multitemporal Sentinel-2 Data', IGARSS 2019, Yokohama, Japan
