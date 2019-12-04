@@ -19,10 +19,10 @@ train_areas = ['abudhabi', 'beihai', 'aguasclaras', 'beirut', 'bercy', 'bordeaux
 
                  'hongkong', 'mumbai', 'nantes', 'rennes', 'saclay_e', 'pisa', 'rennes']
 
-csv_file_train = './xys/myxys_train.csv'
-csv_file_val = './xys/myxys_val.csv'
-img_folder = '/home/mariapap/DATA/BRANDNEW/custom_dataset/IMGS_PREPROCESSED/'
-lbl_folder = '/home/mariapap/DATA/NEW_SEASON/Labels/'
+csv_file_train = '../myxys_train.csv'
+csv_file_val = '../myxys_val.csv'
+img_folder = '../IMGS_PREPROCESSED/' #folder with preprocessed images according to preprocess.py
+lbl_folder = '../Labels/' #folder with OSCD dataset's labels
 patch_size=32
 nb_dates = [1,5]
 model_type = 'simple' #choose network type ('simple' or 'lstm')
