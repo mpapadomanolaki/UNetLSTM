@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn import init
 from torch.autograd import Variable
+import tools
 
 class conv_block(nn.Module):
     def __init__(self,ch_in,ch_out):
@@ -79,10 +80,10 @@ class set_values(nn.Module):
 
 
     def forward(self, seq, xinp):
-        xout = to_cuda(Variable(torch.zeros(xinp.size()[0], xinp.size()[1], self.hidden_size, self.height, self.width)))
+        xout = tools.to_cuda(Variable(torch.zeros(xinp.size()[0], xinp.size()[1], self.hidden_size, self.height, self.width)))
 
-        h_state, c_state = ( to_cuda(Variable(torch.zeros(xinp[0].shape[0], self.hidden_size, self.height, self.width))),
-                             to_cuda(Variable(torch.zeros(xinp[0].shape[0], self.hidden_size, self.height, self.width))) )
+        h_state, c_state = ( tools.to_cuda(Variable(torch.zeros(xinp[0].shape[0], self.hidden_size, self.height, self.width))),
+                             tools.to_cuda(Variable(torch.zeros(xinp[0].shape[0], self.hidden_size, self.height, self.width))) )
 
         for t in range(xinp.size()[0]):
             input_t = seq(xinp[t])
@@ -143,7 +144,6 @@ class U_Net(nn.Module):
         return x1,x2,x3,x4,x5
 
     def forward(self,input):
-	#5D input in the form of (Dates, Batchsize, Channels, Height, Width)
         #encoding path
         x1,x2,x3,x4,x5 = self.encoder(input)
 
