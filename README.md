@@ -14,10 +14,6 @@ and city = ['abudhabi', 'aguasclaras', 'beihai', 'beirut', 'bercy', 'bordeaux', 
         'norcia', 'paris', 'pisa', 'rennes', 'rio', 'saclay_e', 'saclay_w', 'valencia']
 
 IMG_FOLDER = './images/' #folder of the form ./images/abudhabi/imgs_1/..(13 tif 2D images of sentinel channels)..
-                                 #           ./images/abudhabi/imgs_2/..(13 tif 2D images of sentinel channels)..
-                                 #           ....
-                                 #           ./images/abudhabi/imgs_n/..(13 tif 2D images of sentinel channels)..
-                                 #           where n = number of dates
 
 Use preprocess.py to preprocess the images of the OSCD dataset.
 
