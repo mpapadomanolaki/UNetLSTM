@@ -9,7 +9,7 @@ train_areas = ['abudhabi', 'beihai', 'aguasclaras', 'beirut', 'bercy', 'bordeaux
 
                  'hongkong', 'mumbai', 'nantes', 'rennes', 'saclay_e', 'pisa', 'rennes']
 
-FOLDER='/home/mariapap/DATA/NEW_SEASON/Labels/'
+FOLDER='../Labels/'
 
 step=6
 patch_s=32
@@ -86,11 +86,11 @@ for i_city in train_areas:
  xy_city =  sliding_window_train(i_city, train_areas, train_gt, patch_s, step)
  cities.append(xy_city)
 
+#from all training (x,y) locations, divide 4/5 for training and 1/5 for validation
 final_cities = np.concatenate(cities, axis=0)
 size_len = len(final_cities)
 portion=size_len/5
 final_cities=shuffle(final_cities)
-
 final_cities_train = final_cities[:4*portion]
 final_cities_val = final_cities[4*portion:]
 
@@ -101,7 +101,7 @@ df = pd.DataFrame({'X': list(final_cities_train[:,0]),
                    'image_ID': list(final_cities_train[:,2]),
                    'transform_ID': list(final_cities_train[:,3]),
                    })
-df.to_csv('./xys/myxys_train.csv', index=False, columns=["X", "Y", "image_ID", "transform_ID"])
+df.to_csv('../myxys_train.csv', index=False, columns=["X", "Y", "image_ID", "transform_ID"])
 
 
 df = pd.DataFrame({'X': list(final_cities_val[:,0]),
@@ -109,4 +109,4 @@ df = pd.DataFrame({'X': list(final_cities_val[:,0]),
                    'image_ID': list(final_cities_val[:,2]),
                    'transform_ID': list(final_cities_val[:,3]),
                    })
-df.to_csv('./xys/myxys_val.csv', index=False, columns=["X", "Y", "image_ID", "transform_ID"])
+df.to_csv('../myxys_val.csv', index=False, columns=["X", "Y", "image_ID", "transform_ID"])
