@@ -80,6 +80,7 @@ class U_Net(nn.Module):
         return x1,x2,x3,x4,x5
 
     def forward(self,input):
+	#5D input in the form of (Dates, Batchsize, Channels, Height, Width)			
         encodings = []
         for nd in self.nb_dates:
             out = self.encoder(input[self.nb_dates.index(nd)])
