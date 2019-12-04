@@ -44,26 +44,26 @@ class RNNCell(nn.Module):
         self.input_size = input_size
         self.hidden_size = hidden_size
         self.in_gate = nn.Conv2d(input_size + hidden_size, hidden_size, 3, 1, 1)
-        self.remember_gate = nn.Conv2d(input_size + hidden_size, hidden_size, 3, 1, 1)
+        self.forget_gate = nn.Conv2d(input_size + hidden_size, hidden_size, 3, 1, 1)
         self.out_gate = nn.Conv2d(input_size + hidden_size, hidden_size, 3, 1, 1)
         self.cell_gate = nn.Conv2d(input_size + hidden_size, hidden_size, 3, 1, 1)
 
     def forward(self, input, h_state, c_state):
 
-        stacked_inputs = torch.cat( (input, h_state), 1)
+        conc_inputs = torch.cat( (input, h_state), 1)
 
-        in_gate = self.in_gate(stacked_inputs)
-        remember_gate = self.remember_gate(stacked_inputs)
-        out_gate = self.out_gate(stacked_inputs)
-        cell_gate = self.cell_gate(stacked_inputs)
+        in_gate = self.in_gate(conc_inputs)
+        forget_gate = self.forget_gate(conc_inputs)
+        out_gate = self.out_gate(conc_inputs)
+        cell_gate = self.cell_gate(conc_inputs)
 
         in_gate = torch.sigmoid(in_gate)
-        remember_gate = torch.sigmoid(remember_gate)
+        forget_gate = torch.sigmoid(forget_gate)
         out_gate = torch.sigmoid(out_gate)
 
         cell_gate = torch.tanh(cell_gate)
 
-        c_state = (remember_gate * c_state) + (in_gate * cell_gate)
+        c_state = (forget_gate * c_state) + (in_gate * cell_gate)
         h_state = out_gate * torch.tanh(c_state)
 
         return h_state, c_state
