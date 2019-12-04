@@ -4,14 +4,6 @@ import torch.nn.functional as F
 from torch.nn import init
 from torch.autograd import Variable
 
-USE_CUDA = torch.cuda.is_available()
-DEVICE = 2
-def to_cuda(v):
-    if USE_CUDA:
-        return v.cuda(DEVICE)
-    return v
-
-
 class conv_block(nn.Module):
     def __init__(self,ch_in,ch_out):
         super(conv_block,self).__init__()
