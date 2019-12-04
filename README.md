@@ -5,15 +5,13 @@
 # 1. Preprocessing with preprocess.py
 Create a folder (e.g 'images') of the raw data with the following structure:
 
-/images/ city/ imgs_i/ (13 tif 2D images of sentinel channels)
+/ images / city / imgs_i / (13 tif 2D images of sentinel channels)
 
 where i=[1,2,3,4,5] 
 
 and city = ['abudhabi', 'aguasclaras', 'beihai', 'beirut', 'bercy', 'bordeaux', 'brasilia', 'chongqing',
         'cupertino', 'dubai', 'hongkong', 'lasvegas', 'milano', 'montpellier', 'mumbai', 'nantes',
         'norcia', 'paris', 'pisa', 'rennes', 'rio', 'saclay_e', 'saclay_w', 'valencia']
-
-IMG_FOLDER = './images/' #folder of the form ./images/abudhabi/imgs_1/..(13 tif 2D images of sentinel channels)..
 
 Use preprocess.py to preprocess the images of the OSCD dataset.
 
