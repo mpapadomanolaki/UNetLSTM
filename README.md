@@ -21,11 +21,12 @@ IMG_FOLDER = './images/' #folder of the form ./images/abudhabi/imgs_1/..(13 tif 
 
 Use preprocess.py to preprocess the images of the OSCD dataset.
 
+# 2. Create csv file with (x,y) locations for patch extraction during the training process using make_xys.py
+Here you need to specify the folder with the OSCD dataset's Labels.
 
+# 3. Start the training process with main.py
 
-2. Use make_xys.py to create csv file with (x,y) locations for patch extraction during the training process.
-3. Use main.py to start the training process.
-4. Use inference.py to make predictions on the testing images.
+# 4. Make predictions on the OSCD dataset's testing images with inference.py
 
 Comments are included in the scripts for further instructions.
 
