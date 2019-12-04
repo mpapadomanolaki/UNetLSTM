@@ -24,4 +24,4 @@ Here you need to specify the folder with the OSCD dataset's Labels.
 
 Comments are included in the scripts for further instructions.
 
-If you find this work useful, please consider citing: M.Papadomanolaki, Sagar Verma, M. Vakalopoulou, S. Gupta, K., 'DETECTING URBAN CHANGES WITH RECURRENT NEURAL NETWORKS FROMMULTITEMPORAL SENTINEL-2 DATA'
+If you find this work useful, please consider citing: M.Papadomanolaki, Sagar Verma, M. Vakalopoulou, S. Gupta, K., 'DETECTING URBAN CHANGES WITH RECURRENT NEURAL NETWORKS FROM MULTITEMPORAL SENTINEL-2 DATA'
