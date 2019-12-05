@@ -5,7 +5,6 @@ import os
 import cv2
 import pandas as pd
 
-#train_areas list should be exactly the same with the one defined in main.py
 train_areas = ['abudhabi', 'beihai', 'aguasclaras', 'beirut', 'bercy', 'bordeaux', 'cupertino',
 
                  'hongkong', 'mumbai', 'nantes', 'rennes', 'saclay_e', 'pisa', 'rennes']
