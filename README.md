@@ -22,6 +22,8 @@ Use preprocess.py to preprocess the images of the OSCD dataset.
 # 2. Create csv file with (x,y) locations for patch extraction during the training process using make_xys.py
 Here you need to specify the folder with the OSCD dataset's Labels.
 
+Note that 'train_areas' list should be defined in the same way both in make_xys.py and main.py
+
 # 3. Start the training process with main.py
 
 # 4. Make predictions on the OSCD dataset's testing images with inference.py
