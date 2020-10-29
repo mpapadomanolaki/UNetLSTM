@@ -8,7 +8,7 @@ import argparse
 import shutil
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--labels_folder', type=str, default='/home/mariapap/DATA/NEW_SEASON/Labels/',
+parser.add_argument('--labels_folder', type=str, default='../Labels/',
                     help='destination path for the labels folder')
 parser.add_argument('--patch_size', type=int, default=32,
                     help='dimensions of the patch size you wish to use')
