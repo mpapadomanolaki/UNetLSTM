@@ -24,7 +24,7 @@ parser.add_argument('--xys', type=str, default='./xys/',
                     help='destination path for the csv files')
 parser.add_argument('--patch_size', type=int, default=32,
                     help='dimensions of the patch size you wish to use')
-parser.add_argument('--nb_dates', type=list, default=[1,2],
+parser.add_argument('--nb_dates', type=list, default=[1,5],
                     help='number of dates you wish to use')
 parser.add_argument('--model_type', type=str, default='lstm',
                     help='simple or lstm')
