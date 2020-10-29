@@ -43,8 +43,6 @@ lbl_folder = args.labels_folder #folder with OSCD dataset's labels
 patch_size=args.patch_size
 nb_dates = args.nb_dates #specify the number of dates you want to use, e.g put [1,2,3,4,5] if you want to use all five dates
                  #or [1,2,5] to use just three of them
-model_type = 'simple' #choose network type ('simple' or 'lstm')
-                      #'simple' refers to a simple U-Net while 'lstm' refers to a U-Net involving LSTM blocks
 
 networks_folder_path = './networks/'
 import sys
