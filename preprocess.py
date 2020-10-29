@@ -7,10 +7,10 @@ import argparse
 import shutil
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--images_folder', type=str, default='./',
+parser.add_argument('--images_folder', type=str, default='../Images/',
                     help='destination path for the images folder')
-parser.add_argument('--save_folder', type=str, default='./IMGS_PREPROCESSED/',
-                    help='where to save the processed imaged')
+parser.add_argument('--save_folder', type=str, default='../IMGS_PREPROCESSED/',
+                    help='where to save the processed images')
 
 args = parser.parse_args()
 
