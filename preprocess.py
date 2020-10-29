@@ -3,6 +3,16 @@ from skimage import io
 import numpy as np
 import os
 import glob
+import argparse
+import shutil
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--images_folder', type=str, default='./',
+                    help='destination path for the images folder')
+parser.add_argument('--save_folder', type=str, default='./IMGS_PREPROCESSED/',
+                    help='where to save the processed imaged')
+
+args = parser.parse_args()
 
 def stretch_8bit(band, lower_percent=2, higher_percent=98):
  a = 0
@@ -57,7 +67,7 @@ def histogram_match(source, reference, match_proportion=1.0):
 
     return target.reshape(orig_shape)
 
-IMG_FOLDER = '../Images/' #folder of the form ./Images/abudhabi/imgs_1/..(13 tif 2D images of sentinel channels)..
+IMG_FOLDER = args.images_folder #folder of the form ./Images/abudhabi/imgs_1/..(13 tif 2D images of sentinel channels)..
                                  #           ./Images/abudhabi/imgs_2/..(13 tif 2D images of sentinel channels)..
                                  #           ....
                                  #           ./Images/abudhabi/imgs_n/..(13 tif 2D images of sentinel channels)..
@@ -71,8 +81,12 @@ all_areas = ['abudhabi', 'aguasclaras', 'beihai', 'beirut', 'bercy', 'bordeaux',
         'cupertino', 'dubai', 'hongkong', 'lasvegas', 'milano', 'montpellier', 'mumbai', 'nantes',
         'norcia', 'paris', 'pisa', 'rennes', 'rio', 'saclay_e', 'saclay_w', 'valencia']
 
-DESTINATION_FOLDER = 'IMGS_PREPROCESSED'
-os.mkdir('./'+DESTINATION_FOLDER)
+all_areas = ['aguasclaras', 'beihai']
+
+save_folder = args.save_folder
+if os.path.exists(save_folder):
+    shutil.rmtree(save_folder)
+os.mkdir(save_folder)
 
 for i_path in all_areas:
  print(i_path)
@@ -86,7 +100,7 @@ for i_path in all_areas:
  gts = [s for s in date_folders[0] if 'B02' in s]
  gts = io.imread(gts[0])
 
- os.mkdir('./'+DESTINATION_FOLDER+'/'+i_path+'/')
+ os.mkdir(save_folder + i_path+'/')
 
  for nd in nb_dates:
       print('date', nd)
@@ -116,4 +130,4 @@ for i_path in all_areas:
       im_merge = np.stack(imgs, axis=2)
       im_merge = np.asarray(im_merge)
       im_merge = np.reshape(im_merge, (im_merge.shape[0], im_merge.shape[1], im_merge.shape[2]))
-      np.save('./'+ DESTINATION_FOLDER+'/'+i_path+'/'+i_path+'_{}.npy'.format(str(nd)), im_merge)
+      np.save(save_folder +i_path+'/'+i_path+'_{}.npy'.format(str(nd)), im_merge)
