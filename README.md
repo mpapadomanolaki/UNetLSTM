@@ -25,7 +25,7 @@ https://arxiv.org/abs/1910.07778
 
    ```
    where imgs_i are the subfolders with the 13 available channels for every city. 
-   Use preprocess.py to preprocess the images of the OSCD dataset.
+   Use preprocess.py to preprocess theese images.
    
    In the end, each preprocessed city folder should look like this:
    ```ruby
