@@ -10,9 +10,9 @@ import argparse
 import shutil
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--images_folder', type=str, default='/home/mariapap/DATA/NEW_SEASON/SAGAR_nonlabeled/',
+parser.add_argument('--images_folder', type=str, default='../images_nonlabeled/',
                     help='destination path for the images folder')
-parser.add_argument('--labels_folder', type=str, default='/home/mariapap/DATA/NEW_SEASON/Labels/',
+parser.add_argument('--labels_folder', type=str, default='../Labels/',
                     help='destination path for the labels folder')
 parser.add_argument('--xys', type=str, default='./xys/',
                     help='destination path for the csv files')
