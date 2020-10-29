@@ -17,13 +17,14 @@ https://arxiv.org/abs/1910.07778
         'cupertino', 'dubai', 'hongkong', 'lasvegas', 'milano', 'montpellier', 'mumbai', 'nantes',
         'norcia', 'paris', 'pisa', 'rennes', 'rio', 'saclay_e', 'saclay_w', 'valencia']
 
-    For example, if you have 5 dates for each city, each folder should look like this (e.g for abudhabi): 
+   For example, if you have 5 dates for each city, each folder should look like this (e.g for abudhabi): 
     
    ```ruby 
    mariapap@pikolo2:~/DATA/Images/abudhabi$ ls
    imgs_1  imgs_2  imgs_3  imgs_4  imgs_5
 
    ```
+   where imgs_i are the subfolders with the 13 available channels for every city. 
    Use preprocess.py to preprocess the images of the OSCD dataset.
    
    In the end, each preprocessed city folder should look like this:
