@@ -53,4 +53,6 @@ https://arxiv.org/abs/1910.07778
 
    Comments are included in the scripts for further instructions.
 
-If you find this work useful, please consider citing: M.Papadomanolaki, Sagar Verma, M. Vakalopoulou, S. Gupta, K., 'Detecting Urban Changes With Recurrent Neural Networks From Multitemporal Sentinel-2 Data', IGARSS 2019, Yokohama, Japan
+If you find this work useful, please consider citing: 
+
+M.Papadomanolaki, Sagar Verma, M. Vakalopoulou, S. Gupta, K., 'Detecting Urban Changes With Recurrent Neural Networks From Multitemporal Sentinel-2 Data', IGARSS 2019, Yokohama, Japan
