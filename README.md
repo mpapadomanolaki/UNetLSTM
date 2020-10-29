@@ -21,10 +21,16 @@ https://arxiv.org/abs/1910.07778
     
    ```ruby 
    mariapap@pikolo2:~/DATA/Images/abudhabi$ ls
+   imgs_1  imgs_2  imgs_3  imgs_4  imgs_5
+
+   ```
+   Use preprocess.py to preprocess the images of the OSCD dataset.
+   
+   In the end, each preprocessed city folder should look like this:
+   ```ruby
+   mariapap@pikolo2:~/DATA/Preprocessed_Images/abudhabi$ ls
    abudhabi_1.npy  abudhabi_2.npy  abudhabi_3.npy  abudhabi_4.npy  abudhabi_5.npy
    ```
-
-    Use preprocess.py to preprocess the images of the OSCD dataset.
    
 2. Create csv files with (x,y) locations for patch extraction during the training and validation process using make_xys.py
    Here you need to specify the folder with the OSCD dataset's Labels.
