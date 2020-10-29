@@ -57,10 +57,10 @@ def histogram_match(source, reference, match_proportion=1.0):
 
     return target.reshape(orig_shape)
 
-IMG_FOLDER = '../images/' #folder of the form ./IMGS_PREPROCESSED/abudhabi/imgs_1/..(13 tif 2D images of sentinel channels)..
-                                 #           ./IMGS_PREPROCESSED/abudhabi/imgs_2/..(13 tif 2D images of sentinel channels)..
+IMG_FOLDER = '../images/' #folder of the form ./Images/abudhabi/imgs_1/..(13 tif 2D images of sentinel channels)..
+                                 #           ./Images/abudhabi/imgs_2/..(13 tif 2D images of sentinel channels)..
                                  #           ....
-                                 #           ./IMGS_PREPROCESSED/abudhabi/imgs_n/..(13 tif 2D images of sentinel channels)..
+                                 #           ./Images/abudhabi/imgs_n/..(13 tif 2D images of sentinel channels)..
                                  #           where n = number of dates
 
 nb_dates = [1,2,3,4,5] ##here you specify which dates you want to use
