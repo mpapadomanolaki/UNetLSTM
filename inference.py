@@ -5,8 +5,30 @@ import numpy as np
 import os
 from tqdm import tqdm
 import torch
-import network
 import tools
+import argparse
+import shutil
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--images_folder', type=str, default='/home/mariapap/DATA/NEW_SEASON/SAGAR_nonlabeled/',
+                    help='destination path for the images folder')
+parser.add_argument('--labels_folder', type=str, default='/home/mariapap/DATA/NEW_SEASON/Labels/',
+                    help='destination path for the labels folder')
+parser.add_argument('--xys', type=str, default='./xys/',
+                    help='destination path for the csv files')
+parser.add_argument('--saved_model', type=str, default='./models/model_3.pt',
+                    help='destination path for the trained model')
+parser.add_argument('--patch_size', type=int, default=32,
+                    help='dimensions of the patch size you wish to use')
+parser.add_argument('--step', type=int, default=32,
+                    help='step you wish to use for the extraction of patches for inference')
+parser.add_argument('--nb_dates', type=list, default=[1,2],
+                    help='number of dates you wish to use')
+parser.add_argument('--model_type', type=str, default='lstm',
+                    help='simple or lstm')
+
+args = parser.parse_args()
+
 
 def sliding_window(IMAGE, patch_size, step):
     prediction = np.zeros((IMAGE.shape[3], IMAGE.shape[4], 2))
@@ -54,20 +76,40 @@ def sliding_window(IMAGE, patch_size, step):
 
     return final_pred
 
+
+patch_size = args.patch_size
+step = args.step
+
+networks_folder_path = './networks/'
+import sys
+sys.path.insert(0, networks_folder_path)
+
+model_type = args.model_type #choose network type ('simple' or 'lstm')
+                      #'simple' refers to a simple U-Net while 'lstm' refers to a U-Net involving LSTM blocks
+if model_type == 'simple':
+    import network
+    model=tools.to_cuda(network.U_Net(4,2,nb_dates))
+elif model_type=='lstm':
+    import networkL
+    model=tools.to_cuda(networkL.U_Net(4,2,patch_size))
+else:
+ print('invalid on_network_argument')
+
+
 test_areas = ['brasilia', 'milano', 'norcia', 'chongqing', 'dubai', 'lasvegas', 'montpellier', 'rio', 'saclay_w', 'valencia']
-test_areas=['brasilia']
-nb_dates = [1,2,3,4,5]
-patch_size = 32
-step = 16
-model=network.U_Net(4,2,nb_dates)
-BATCH_SIZE=1
-save_dir = 'PREDICTIONS'
-os.mkdir(save_dir)
-model.load_state_dict(torch.load('./saved_models/model_22.pt')) #ena apo to 5D
-model=tools.to_cuda(model)
+nb_dates = args.nb_dates
+patch_size = args.patch_size
+step = args.step
+
+save_folder = 'PREDICTIONS'
+if os.path.exists(save_folder):
+    shutil.rmtree(save_folder)
+os.mkdir(save_folder)
+
+model.load_state_dict(torch.load(args.saved_model)) #ena apo to 5D
 model = model.eval()
 
-FOLDER = './IMGS_PREPROCESSED/'
+FOLDER = args.images_folder
 
 for id in test_areas:
    print('test_area', id)
@@ -82,4 +124,4 @@ for id in test_areas:
    imgs = np.reshape(imgs, (imgs.shape[0], 1, imgs.shape[1], imgs.shape[2], imgs.shape[3]))
 
    pred = sliding_window(imgs, patch_size, step)
-   cv2.imwrite('./' + save_dir + '/' + id + '.tif', pred)
+   cv2.imwrite('./' + save_folder + '/' + id + '.tif', pred)
