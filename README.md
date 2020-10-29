@@ -8,9 +8,9 @@ https://arxiv.org/abs/1910.07778
 # Steps
 1. Preprocessing with preprocess.py
    
-   Create a folder (e.g 'images') of the raw data with the following structure:
+   Create a folder (e.g 'Images') of the raw data with the following structure:
 
-   / images / city / imgs_i / (13 tif 2D images of sentinel channels)
+   / Images / city / imgs_i / (13 tif 2D images of sentinel channels)
 
    where i=[1,2,3,4,5] 
 
