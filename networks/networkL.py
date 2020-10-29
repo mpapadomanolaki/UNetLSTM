@@ -71,18 +71,18 @@ class RNNCell(nn.Module):
 class set_values(nn.Module):
     def __init__(self, hidden_size, height, width):
             super(set_values, self).__init__()
-            self.hidden_size=hidden_size
-            self.height=height
-            self.width=width
+            self.hidden_size=int(hidden_size)
+            self.height=int(height)
+            self.width=int(width)
             self.dropout = nn.Dropout(0.7)
             self.RCell = RNNCell(self.hidden_size, self.hidden_size)
 
 
     def forward(self, seq, xinp):
-        xout = tools.to_cuda(Variable(torch.zeros(xinp.size()[0], xinp.size()[1], self.hidden_size, self.height, self.width)))
+        xout = tools.to_cuda(Variable(torch.zeros(int(xinp.size()[0]), int(xinp.size()[1]), self.hidden_size, self.height, self.width)))
 
-        h_state, c_state = ( tools.to_cuda(Variable(torch.zeros(xinp[0].shape[0], self.hidden_size, self.height, self.width))),
-                             tools.to_cuda(Variable(torch.zeros(xinp[0].shape[0], self.hidden_size, self.height, self.width))) )
+        h_state, c_state = ( tools.to_cuda(Variable(torch.zeros(int(xinp[0].shape[0]), self.hidden_size, self.height, self.width))),
+                             tools.to_cuda(Variable(torch.zeros(int(xinp[0].shape[0]), self.hidden_size, self.height, self.width))) )
 
         for t in range(xinp.size()[0]):
             input_t = seq(xinp[t])
