@@ -17,7 +17,7 @@ https://arxiv.org/abs/1910.07778
         'cupertino', 'dubai', 'hongkong', 'lasvegas', 'milano', 'montpellier', 'mumbai', 'nantes',
         'norcia', 'paris', 'pisa', 'rennes', 'rio', 'saclay_e', 'saclay_w', 'valencia']
 
-    For example, if you have 5 dates for each city, each folder should look like this (e.g for abidhabi): 
+    For example, if you have 5 dates for each city, each folder should look like this (e.g for abudhabi): 
     
    ```ruby 
    mariapap@pikolo2:~/DATA/Images/abudhabi$ ls
