@@ -57,7 +57,7 @@ def histogram_match(source, reference, match_proportion=1.0):
 
     return target.reshape(orig_shape)
 
-IMG_FOLDER = '../images/' #folder of the form ./Images/abudhabi/imgs_1/..(13 tif 2D images of sentinel channels)..
+IMG_FOLDER = '../Images/' #folder of the form ./Images/abudhabi/imgs_1/..(13 tif 2D images of sentinel channels)..
                                  #           ./Images/abudhabi/imgs_2/..(13 tif 2D images of sentinel channels)..
                                  #           ....
                                  #           ./Images/abudhabi/imgs_n/..(13 tif 2D images of sentinel channels)..
