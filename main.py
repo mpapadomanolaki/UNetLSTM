@@ -10,37 +10,56 @@ import numpy as np
 import torchnet as tnt
 from skimage import io
 import tools
-import network
-import networkL
 import custom
 from torch.utils.data import DataLoader
+import argparse
+import shutil
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--images_folder', type=str, default='/home/mariapap/DATA/NEW_SEASON/SAGAR_labeled/',
+                    help='destination path for the images folder')
+parser.add_argument('--labels_folder', type=str, default='/home/mariapap/DATA/NEW_SEASON/Labels/',
+                    help='destination path for the labels folder')
+parser.add_argument('--xys', type=str, default='./xys/',
+                    help='destination path for the csv files')
+parser.add_argument('--patch_size', type=int, default=32,
+                    help='dimensions of the patch size you wish to use')
+parser.add_argument('--nb_dates', type=list, default=[1,2],
+                    help='number of dates you wish to use')
+parser.add_argument('--model_type', type=str, default='lstm',
+                    help='simple or lstm')
+
+args = parser.parse_args()
+
 
 train_areas = ['abudhabi', 'beihai', 'aguasclaras', 'beirut', 'bercy', 'bordeaux', 'cupertino',
 
                  'hongkong', 'mumbai', 'nantes', 'rennes', 'saclay_e', 'pisa', 'rennes']
 
-csv_file_train = '../myxys_train.csv'
-csv_file_val = '../myxys_val.csv'
-img_folder = '../IMGS_PREPROCESSED/' #folder with preprocessed images according to preprocess.py
-lbl_folder = '../Labels/' #folder with OSCD dataset's labels
-patch_size=32
-nb_dates = [1,5] #specify the number of dates you want to use, e.g put [1,2,3,4,5] if you want to use all five dates
+csv_file_train = args.xys + 'myxys_train.csv'
+csv_file_val = args.xys + 'myxys_val.csv'
+img_folder = args.images_folder #folder with preprocessed images according to preprocess.py
+lbl_folder = args.labels_folder #folder with OSCD dataset's labels
+patch_size=args.patch_size
+nb_dates = args.nb_dates #specify the number of dates you want to use, e.g put [1,2,3,4,5] if you want to use all five dates
                  #or [1,2,5] to use just three of them
 model_type = 'simple' #choose network type ('simple' or 'lstm')
                       #'simple' refers to a simple U-Net while 'lstm' refers to a U-Net involving LSTM blocks
 
-networks_folder_path = './networks'
+networks_folder_path = './networks/'
 import sys
 sys.path.insert(0, networks_folder_path)
 
-model_type = 'lstm' #choose network type ('simple' or 'lstm')
+model_type = args.model_type #choose network type ('simple' or 'lstm')
                       #'simple' refers to a simple U-Net while 'lstm' refers to a U-Net involving LSTM blocks
 if model_type == 'simple':
+    import network
     model=tools.to_cuda(network.U_Net(4,2,nb_dates))
 elif model_type=='lstm':
+    import networkL
     model=tools.to_cuda(networkL.U_Net(4,2,patch_size))
 else:
- print 'invalid on_network_argument'
+ print('invalid on_network_argument')
 
 change_dataset_train =  custom.MyDataset(csv_file_train, train_areas, img_folder, lbl_folder, nb_dates, patch_size)
 change_dataset_val =  custom.MyDataset(csv_file_val, train_areas, img_folder, lbl_folder, nb_dates, patch_size)
@@ -58,8 +77,11 @@ confusion_matrix = tnt.meter.ConfusionMeter(2, normalized=True)
 epochs=60
 
 save_folder = 'models' #where to save the models and training progress
+if os.path.exists(save_folder):
+    shutil.rmtree(save_folder)
 os.mkdir(save_folder)
-ff=open('./' + save_folder + '/progress_L2D.txt','w')
+
+ff=open('./' + save_folder + '/progress.txt','w')
 iter_=0
 for epoch in range(1,epochs+1):
     mydataset = DataLoader(change_dataset_train, batch_size=32, shuffle=True)
