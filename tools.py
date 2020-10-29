@@ -30,7 +30,7 @@ def conf_m(output, target_th):
   return output_conf, target_conf
 
 def write_results(ff, save_folder, epoch, train_acc, test_acc, change_acc, non_ch, train_losses, val_losses):
-    ff=open('./' + save_folder + '/progress_run.txt','a')
+    ff=open('./' + save_folder + '/progress.txt','a')
     ff.write('train: ')
     ff.write(str('%.3f' % train_acc))
     ff.write(' ')
