@@ -17,15 +17,22 @@ https://arxiv.org/abs/1910.07778
         'cupertino', 'dubai', 'hongkong', 'lasvegas', 'milano', 'montpellier', 'mumbai', 'nantes',
         'norcia', 'paris', 'pisa', 'rennes', 'rio', 'saclay_e', 'saclay_w', 'valencia']
 
-    Use preprocess.py to preprocess the images of the OSCD dataset.
+    For example, if you have 5 dates for each city, each folder should look like this (e.g for abidhabi): 
+    
+   ```ruby 
+   mariapap@pikolo2:~/DATA/Images/abudhabi$ ls
+   abudhabi_1.npy  abudhabi_2.npy  abudhabi_3.npy  abudhabi_4.npy  abudhabi_5.npy
+   ```
 
+    Use preprocess.py to preprocess the images of the OSCD dataset.
+   
 2. Create csv files with (x,y) locations for patch extraction during the training and validation process using make_xys.py
    Here you need to specify the folder with the OSCD dataset's Labels.
    The csv files will be saved in a folder named 'xys'.
    Also, inside the make_xys.py script there is a list containing the names of the training cities.
    
    ```ruby
-      train_areas = ['abudhabi', 'beihai', 'aguasclaras', 'beirut', 'bercy', 'bordeaux', 'cupertino',
+   train_areas = ['abudhabi', 'beihai', 'aguasclaras', 'beirut', 'bercy', 'bordeaux', 'cupertino',
       
                  'hongkong', 'mumbai', 'nantes', 'rennes', 'saclay_e', 'pisa', 'rennes']
    ```
