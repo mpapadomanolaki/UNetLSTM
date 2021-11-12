@@ -81,8 +81,6 @@ all_areas = ['abudhabi', 'aguasclaras', 'beihai', 'beirut', 'bercy', 'bordeaux',
         'cupertino', 'dubai', 'hongkong', 'lasvegas', 'milano', 'montpellier', 'mumbai', 'nantes',
         'norcia', 'paris', 'pisa', 'rennes', 'rio', 'saclay_e', 'saclay_w', 'valencia']
 
-all_areas = ['aguasclaras', 'beihai']
-
 save_folder = args.save_folder
 if os.path.exists(save_folder):
     shutil.rmtree(save_folder)
